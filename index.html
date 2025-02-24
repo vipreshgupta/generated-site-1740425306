@@ -1,0 +1,434 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IIT Mandi Formula Student Car Project</title>
+    <style>
+        /* Reset and Basic Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #212121;
+            color: #FFFFFF;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        a {
+            text-decoration: none;
+            color: #FFFFFF;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #1976D2;
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.25rem;
+            margin-bottom: 1rem;
+            color: #D32F2F;
+            text-align: center;
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #BDBDBD;
+            text-align: justify;
+        }
+
+        /* Navigation Bar */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(33, 33, 33, 0.9);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: #FFFFFF;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+            min-height: 100vh; /* Ensure sections fill the viewport */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Hero Section */
+        #hero {
+            background-color: #212121;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        #carModel {
+            width: 80%;
+            height: 80%;
+            max-width: 800px;
+            max-height: 600px;
+        }
+
+        /* About Section */
+        #about {
+            background-color: #303030;
+        }
+
+        /* Projects Section */
+        #projects {
+            background-color: #212121;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .project-card {
+            background-color: #303030;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-card h3 {
+            padding: 1rem;
+            color: #FFFFFF;
+        }
+
+        .project-card p {
+            padding: 0 1rem 1rem;
+        }
+
+        /* Gallery Section */
+        #gallery {
+            background-color: #303030;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Updates Section */
+        #updates {
+            background-color: #212121;
+        }
+
+        #updates-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .update {
+            background-color: #303030;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Team Section */
+        #team {
+            background-color: #303030;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .team-member {
+            background-color: #212121;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #212121;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background-color: rgba(33, 33, 33, 0.9);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 1rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#updates">Updates</a></li>
+                <li><a href="#team">Team</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home">
+        <div id="hero">
+            <canvas id="carModel"></canvas>
+            <h1>Engineering Excellence in Motion</h1>
+        </div>
+    </section>
+
+    <!-- About/Vision Section -->
+    <section id="about">
+        <h2>Our Vision</h2>
+        <p>Brief overview of the team's mission and goals. We strive to push the boundaries of engineering and innovation in the field of automotive design. Our team is dedicated to creating a high-performance Formula Student car that embodies speed, precision, and excellence.</p>
+    </section>
+
+    <!-- Projects/CAD Designs Section -->
+    <section id="projects">
+        <h2>Our Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <img src="https://picsum.photos/300/200?random=1" alt="Project 1">
+                <h3>Project Title 1</h3>
+                <p>Short description of the project. This project showcases our advanced CAD designs and technical breakthroughs.</p>
+            </div>
+            <div class="project-card">
+                <img src="https://picsum.photos/300/200?random=2" alt="Project 2">
+                <h3>Project Title 2</h3>
+                <p>Short description of the project. This project highlights our innovative approach to engineering challenges.</p>
+            </div>
+            <!-- Repeat for more projects -->
+        </div>
+    </section>
+
+    <!-- Multimedia Gallery Section -->
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery-grid">
+            <img src="https://picsum.photos/400/300?random=3" alt="Gallery Image 1">
+            <img src="https://picsum.photos/400/300?random=4" alt="Gallery Image 2">
+            <!-- Repeat for more images/videos -->
+        </div>
+    </section>
+
+    <!-- Real-Time Updates Section -->
+    <section id="updates">
+        <h2>Project Updates</h2>
+        <div id="updates-feed">
+            <div class="update">
+                <h3>Update Title 1</h3>
+                <p>Details of the latest project update. Stay tuned for more exciting news and progress reports.</p>
+            </div>
+            <div class="update">
+                <h3>Update Title 2</h3>
+                <p>Another update on our project. We are making significant strides in the development of our Formula Student car.</p>
+            </div>
+            <!-- Dynamic content loaded via JavaScript -->
+        </div>
+    </section>
+
+    <!-- Team Page Section -->
+    <section id="team">
+        <h2>Meet the Team</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="https://picsum.photos/200/200?random=5" alt="Team Member 1">
+                <h3>Member Name 1</h3>
+                <p>Role and brief bio. Our team members are passionate about engineering and dedicated to achieving excellence.</p>
+            </div>
+            <div class="team-member">
+                <img src="https://picsum.photos/200/200?random=6" alt="Team Member 2">
+                <h3>Member Name 2</h3>
+                <p>Role and brief bio. Each member brings unique skills and expertise to the team.</p>
+            </div>
+            <!-- Repeat for more team members -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Contact Information & Social Media Links</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('nav ul');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Basic Three.js Setup for 3D Car Model (Placeholder)
+        // Ensure Three.js library is included if you decide to use it
+        function init3DModel() {
+            if (typeof THREE === 'undefined') {
+                console.warn('Three.js library is not loaded. 3D model will not be displayed.');
+                return;
+            }
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('carModel'), antialias: true });
+
+            renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.8);
+            renderer.setClearColor(0x212121);
+
+            const geometry = new THREE.BoxGeometry();
+            const material = new THREE.MeshBasicMaterial({ color: 0xD32F2F });
+            const cube = new THREE.Mesh(geometry, material);
+            scene.add(cube);
+
+            camera.position.z = 5;
+
+            function animate() {
+                requestAnimationFrame(animate);
+                cube.rotation.x += 0.01;
+                cube.rotation.y += 0.01;
+                renderer.render(scene, camera);
+            }
+
+            animate();
+        }
+
+        // Initialize 3D Model (if Three.js is available)
+        if (document.readyState === "complete" || (document.readyState !== "loading" && !document.documentElement.doScroll)) {
+            init3DModel();
+        } else {
+            document.addEventListener("DOMContentLoaded", init3DModel);
+        }
+    </script>
+</body>
+</html>
